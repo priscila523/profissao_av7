@@ -1,0 +1,339 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Cadastro de profissões</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
+            
+            <img src="img/profissao.png" height="60px" class="navbar-brand rounded-circle">
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav mr-auto">
+                    <span class="navbar-text">Cadastro de Profissões</span>
+                    
+                    <a class="nav-item nav-link" href="#" id="linkInicio">Início
+                        <span class="sr-only">(current)</span></a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" 
+                            id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false">
+                              Cadastros
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#" id="linkListarProfissoes">Profissões</a>
+                            </div>
+                        </li>
+    
+                        <a class="nav-item nav-link" href="#" id="linkListarProfissionais">Profissionais</a>
+                        <a class="nav-item nav-link" href="#" id="linkListarCargos">Cargos</a>
+                        <a class="nav-item nav-link" href="#" id="linkListarEmpresas">Empresas</a>
+                        
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+
+        <div id="corpoDaPagina">
+
+            <div id="conteudoInicial" class="d-none">
+                Seja bem vindo ao Sistema de Cadastro de Profissões!!
+            </div>
+
+         <div class="modal fade" id="modalIncluirProfissao" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Incluir profissão</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                         <div class="form-group">
+                             <label for="campoNome">Nome</label>
+                             <input type="text" class="form-control" id="campoNome"
+                                 aria-describedby="nomeHelp" placeholder="Nome">
+                             <small id="nomeHelp" class="form-text text-muted">Informe o seu nome completo, sem
+                                 abreviações.</small>
+                         </div>
+                         <div class="form-group">
+                             <label for="campoFuncao">Função</label>
+                             <input type="text" class="form-control" id="campoFuncao"
+                                 aria-describedby="funcaoHelp" placeholder="Funcao">
+                             <small id="funcaoHelp" class="form-text text-muted">Informe qual é a área</small>
+                         </div>
+                         <div class="form-group">
+                            <label for="campoDetalhe">Detalhe</label>
+                            <input type="text" class="form-control" id="campoDetalhe"
+                                aria-describedby="detalheHelp" placeholder="Detalhe">
+                            <small id="detalheHelp" class="form-text text-muted">Descreva um pouco sobre a profissão.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="campoCaracteristica">Característica</label>
+                            <input type="text" class="form-control" id="campoCaracteristica"
+                                aria-describedby="caracteristicaHelp" placeholder="Caracteristica">
+                            <small id="caracteristicaHelp" class="form-text text-muted">Informe detalhe únicos da profissão.</small>
+                        </div>
+                     </form>
+                 </div>
+
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                     <button id="btIncluirProfissao" type="button" class="btn btn-primary">Incluir</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="container" id="cadastroProfissoes">
+            <h5>Cadastro de Profissões</h5>
+
+            <a class="nav-item nav-link" data-toggle="modal" 
+            data-target="#modalIncluirProfissao" href="#"><img src="img/incluir.png" height="60px" title="Incluir profissao"></a>
+            
+            <table class="table table-striped table-hover" id="TabelaProfissoes">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Função</th>
+                        <th scope="col">Detalhe</th>
+                        <th scope="col">Característica</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaProfissoes">
+                </tbody>
+            </table>
+        </div>
+
+<!-- IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII -->
+
+        <div class="container" id="cadastroProfissionais">
+            <h5>Profissionais</h5>
+
+            <a class="nav-item nav-link" data-toggle="modal" 
+            data-target="#modalIncluirProfissional" href="#">
+              <img src="img/incluir.png" height="60px" title="Incluir profissional"></a>
+            
+            <table class="table table-striped table-hover" id="tabelaProfissionais">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do profissional</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Função</th>
+                        <th scope="col">Detalhe</th>
+                        <th scope="col">Caracteristica</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaProfissionais">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal fade" id="modalIncluirProfissional" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir profissional</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="campoProfissaoId1">Nome Profissao</label>
+                                    <select class="form-control" id="campoProfissaoId1" 
+                                      aria-describedby="profissaoId1Help" placeholder="ProfissaoId1">
+                                    <!-- opções serão preenchidas via javascript -->
+                                    </select> 
+                                    <img id="loading_campoProfissaoId1" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando profissioes">                                   
+                                    <small id="profissaoId1Help" class="form-text text-muted">Selecione a profissão que fez o exame.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoProfissional">Nome Profissional</label>
+                                    <input type="text" class="form-control" id="campoProfissional"
+                                        aria-describedby="profissionalHelp" placeholder="Profissional">
+                                    <small id="profissionalHelp" class="form-text text-muted">Selecione o exame cujo resultado será informado.</small>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="btIncluirProfissional" type="button" class="btn btn-primary">Incluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+<!-- IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII -->
+
+        <div class="container" id="cadastroCargos">
+            <h5>Cargos</h5>
+
+            
+            <a class="nav-item nav-link" data-toggle="modal" 
+            data-target="#modalIncluirCargo" href="#">
+              <img src="img/incluir.png" height="60px" title="Incluir cargo"></a>
+            
+            
+            <table class="table table-striped table-hover" id="tabelaCargos">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome cargo</th>
+                        <th scope="col">Salário</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Função</th>
+                        <th scope="col">Detalhe</th>
+                        <th scope="col">Caracteristica</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaCargos">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal fade" id="modalIncluirCargo" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir cargo realizado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="campoProfissaoId2">Nome Profissao</label>
+                                    <select class="form-control" id="campoProfissaoId2" 
+                                      aria-describedby="profissaoId2Help" placeholder="ProfissaoId2">
+                                    <!-- opções serão preenchidas via javascript -->
+                                    </select> 
+                                    <img id="loading_campoProfissaoId2" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando profissiões">                                   
+                                    <small id="profissaoId2Help" class="form-text text-muted">Selecione a profissão que fez o exame.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoCargo">Cargo</label>
+                                    <input type="text" class="form-control" id="campoCargo"
+                                        aria-describedby="cargoHelp" placeholder="Cargo">
+                                    <small id="cargoIdHelp" class="form-text text-muted">Selecione a profissão que fez o exame.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoSalarioId">Salário</label>
+                                    <input type="text" class="form-control" id="campoSalario"
+                                        aria-describedby="salarioHelp" placeholder="Salario">
+                                    <small id="salarioIdHelp" class="form-text text-muted">Selecione a profissão que fez o exame.</small>
+                                </div>
+                                
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="btIncluirCargo" type="button" class="btn btn-primary">Incluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+<!-- IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII -->
+
+        <div class="container" id="cadastroEmpresas">
+            <h5>Empresas</h5>
+
+            <a class="nav-item nav-link" data-toggle="modal" 
+            data-target="#modalIncluirEmpresa" href="#">
+              <img src="img/incluir.png" height="60px" title="Incluir empresa"></a>
+            
+            <table class="table table-striped table-hover" id="tabelaEmpresas">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome empresa</th>
+                        <th scope="col">Nome cargo</th>
+                        <th scope="col">Salário</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaEmpresas">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="modalIncluirEmpresa" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir exame realizado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="campoCargoId">Nome cargo</label>
+                                    <select class="form-control" id="campoCargoId"
+                                    aria-describedby="cargoIdHelp" placeholder="CargoId">
+                                    </select>                                    
+                                    <img id="loading_campoCargoId" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando cargos">                                   
+                                    <small id="cargoIdHelp" class="form-text text-muted">Selecione o cargo cujo resultado será informado.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoEmpresa">Nome Empresa</label>
+                                    <input type="text" class="form-control" id="campoEmpresa"
+                                        aria-describedby="empresaHelp" placeholder="Empresa">
+                                    <small id="empresaIdHelp" class="form-text text-muted">Selecione o exame cujo resultado será informado.</small>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="btIncluirEmpresa" type="button" class="btn btn-primary">Incluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="js/meuscript.js"></script>
+</body>
+
+
+</html>
